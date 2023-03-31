@@ -27,3 +27,6 @@ def pos_check(word:str, set:list):
         if word[int(i[0])]!=i[1]:
             return False
     return True
+
+
+print(pos_check('hello', ['0h', '1l']))

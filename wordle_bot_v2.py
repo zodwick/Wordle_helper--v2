@@ -1,12 +1,12 @@
 from operator import and_, or_
 from functools import reduce
 
+
+#checking algorithms
 def containsAll(str:str, set:list):
     return reduce(and_, map(str.__contains__, set))
 def containsAny(str:str, set:list):
     return reduce(or_, map(str.__contains__, set))
-
-
 def pos_check(word:str, set:list):
     for i in set:
         #i = '0a'
@@ -14,24 +14,25 @@ def pos_check(word:str, set:list):
             return False
     return True
 
+
+#loading the words from the file
 def load():
     file = open('five_letter_words.txt','r')
     lines = file.readlines()
     words=list(i[0:5] for i in lines )
     return words
 
-    # print(words)
-    
-    
 
+
+#input parameters    
 def input_params():
     grey:str=input("Enter the elements that were greyed out -no need to put spaces in between --  ")
     yellow:str=input('Enter the elements that are yellow along wihh their positions(0-4)'
                  'eg: 0a2x4i'
-                 '    4k2s ' )
+                 '    4k2s -- ')
     green:str=input('Enter the greened elements along wihh their positions(0-4)'
                  'eg: 0a2x'
-                 '    4k2s ' )
+                 '    4k2s -- ' )
     
     
     #['03', '4k'] format
@@ -108,7 +109,14 @@ def main():
     filter4=[]
     
     for i in list(words):
-        print(i)
+        if not pos_check(i,lyellow_with_pos):
+            filter3.append(i)
+        
+        if pos_check(i,lgreen_with_pos):
+            filter4.append(i)
+    words=set(filter4).intersection(set(filter3))
+    
+    print(words)
     
     
     
