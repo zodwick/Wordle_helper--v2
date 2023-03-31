@@ -92,7 +92,7 @@ def suggestions(list):
     #letters sorted by their frequency eg: ['e', 'l', 'o', 'h'] where e is most frequent and h is least frequent
     
     prime_suggestions=[]
-    # print(sorted_letters)
+    print(sorted_letters)
     
   
     
@@ -118,7 +118,7 @@ def suggestions(list):
                 prime_suggestions.append(i)
         return prime_suggestions
     
-        for i in list:            
+        for i in list:
             if sorted_letters[0] in i and sorted_letters[1] in i:
                 prime_suggestions.append(i)
         return prime_suggestions
@@ -149,16 +149,22 @@ def main():
     lgreen_with_pos=params[4]
     l_words_needed=lyellow_words+lgreen_words
     lgrey_words=[ i for i in lgrey_words if i not in l_words_needed]
-    print(lgrey_words)
     filter1=[]
     filter2=[]
     
     #filtering out the words that contain all the letters in the yellow and green words
     for i in words:
-        if  containsAll(i,l_words_needed):
-            filter1.append(i)  
-        if not containsAny(i,lgrey_words):
-            filter2.append(i)                  
+        if len(l_words_needed)!=0:
+             if  containsAll(i,l_words_needed):
+                filter1.append(i) 
+        else:
+            filter1=words
+                
+        if len(lgrey_words)!=0: 
+            if not containsAny(i,lgrey_words):
+                filter2.append(i) 
+        else:
+            filter2=words                 
             
     words=set(filter1).intersection(set(filter2))
     
