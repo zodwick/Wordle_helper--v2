@@ -109,14 +109,23 @@ def main():
     filter4=[]
     
     for i in list(words):
-        if not pos_check(i,lyellow_with_pos):
-            filter3.append(i)
+        # if not pos_check(i,lyellow_with_pos):
+        #     filter3.append(i)
+        # this is the correct one as repeating positions of yellow are not checked properly
         
         if pos_check(i,lgreen_with_pos):
             filter4.append(i)
-    words=set(filter4).intersection(set(filter3))
+    words=set(filter4).intersection(words)
     
-    print(words)
+    #filtering yellow
+    
+    for i in list(words):
+        if   pos_check(i,lyellow_with_pos):
+            filter3.append(i)
+            print(i)
+            
+            
+    print(words.difference(set(filter3)))
     
     
     
