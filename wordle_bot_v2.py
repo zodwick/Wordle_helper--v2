@@ -148,6 +148,8 @@ def main():
     lyellow_with_pos=params[3]
     lgreen_with_pos=params[4]
     l_words_needed=lyellow_words+lgreen_words
+    lgrey_words=[ i for i in lgrey_words if i not in l_words_needed]
+    print(lgrey_words)
     filter1=[]
     filter2=[]
     
@@ -193,8 +195,9 @@ def main():
             final_list.append(i)
             
     
-    suggestion=suggestions(final_list[0:10])
+    suggestion=suggestions(final_list)
     print(suggestion)
+    
     
     print(final_list[0:10])
     
