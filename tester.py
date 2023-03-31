@@ -13,3 +13,9 @@ def containsAll(str, set):
 
 
 print(containsAll('hello', ['h', 'e', 'l',"f"]))
+
+
+def containsAny(str, set):
+    return reduce(or_, map(str.__contains__, set))
+
+print(containsAny('hello', ["p","f"]))

@@ -3,6 +3,8 @@ from functools import reduce
 
 def containsAll(str:str, set:list):
     return reduce(and_, map(str.__contains__, set))
+def containsAny(str:str, set:list):
+    return reduce(or_, map(str.__contains__, set))
 
 
 
@@ -81,22 +83,24 @@ def main():
     lyellow_with_pos=params[3]
     lgreen_with_pos=params[4]
     l_words_needed=lyellow_words+lgreen_words
-    print(l_words_needed)
     filter1=[]
+    filter2=[]
     
     for i in words:
-       
         if  containsAll(i,l_words_needed):
-            filter1.append(i)                    
+            filter1.append(i)  
+        if not containsAny(i,lgrey_words):
+            filter2.append(i)                  
             
-    print(set(filter1))
+    words=set(filter1).intersection(set(filter2))
+    
+    
+    
+    print(words)
        
     
     
-    #filter green --positive
-    
-    #filter yellow --negative
-    #filter grey --negative
+
     
 
     
