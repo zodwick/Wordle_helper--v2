@@ -109,7 +109,7 @@ def suggestions(list):
     sorted_letters=sorted_letters[0:5]
     print(sorted_letters)
 
-    return(find_prime_suggestions(list, sorted_letters))
+    return(find_prime_suggestions(list[0:int(len(list)/4)], sorted_letters))
     #letters sorted by their frequency eg: ['e', 'l', 'o', 'h'] where e is most frequent and h is least frequent
     
     # prime_suggestions=[]
@@ -233,7 +233,6 @@ def main():
     
     print(final_list[0:10])
     
-    print(final_list)
     
 
 
