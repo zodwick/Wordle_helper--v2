@@ -78,5 +78,32 @@
 
 # suggestions(words)
 
-if "a" and "b" and "c" in "banan":
-    print("yes")
+# if "a" and "b" and "c" in "banan":
+#     print("yes")
+
+
+
+def find_prime_suggestions(word_list, sorted_letters):
+    word_set = set(word_list)
+    max_num_letters = 0
+    prime_suggestions = []
+    for num_letters in range(len(sorted_letters), 0, -1):
+        for word in word_set:
+            if all(letter in word for letter in sorted_letters[:num_letters]):
+                if num_letters > max_num_letters:
+                    max_num_letters = num_letters
+                    prime_suggestions = [word]
+                elif num_letters == max_num_letters:
+                    prime_suggestions.append(word)
+        if len(prime_suggestions) >= 3:
+            return list(set(prime_suggestions))
+    return list(set(prime_suggestions))
+
+
+# print(find_prime_suggestions(["anand","el","elo","eloh"], ['e', 'l', 'o', 'h']))
+
+word_list = ["apkwple", "baneilmnaa", "peackwh", "pearkwo", "plumi"]
+sorted_letters = ["a", "e", "i", "l", "m", "n", "o", "p", "r"]
+
+prime_suggestions = find_prime_suggestions(word_list, sorted_letters)
+print(prime_suggestions)

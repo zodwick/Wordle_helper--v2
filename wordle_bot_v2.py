@@ -71,7 +71,25 @@ def input_params():
            
            
            
-    
+
+def find_prime_suggestions(word_list, sorted_letters):
+    word_set = set(word_list)
+    max_num_letters = 0
+    prime_suggestions = []
+    for num_letters in range(len(sorted_letters), 0, -1):
+        for word in word_set:
+            if all(letter in word for letter in sorted_letters[:num_letters]):
+                if num_letters > max_num_letters:
+                    max_num_letters = num_letters
+                    prime_suggestions = [word]
+                elif num_letters == max_num_letters:
+                    prime_suggestions.append(word)
+        if len(prime_suggestions) >= 3:
+            return list(set(prime_suggestions))
+    return list(set(prime_suggestions))
+
+
+
     
 def suggestions(list):
     string_test=""
@@ -89,52 +107,54 @@ def suggestions(list):
     sorted_frequency = sorted(char_freq.items(), key=lambda x:x[1], reverse=True)
     sorted_letters=[i[0] for i in sorted_frequency]
     sorted_letters=sorted_letters[0:5]
+    print(sorted_letters)
+
+    return(find_prime_suggestions(list, sorted_letters))
     #letters sorted by their frequency eg: ['e', 'l', 'o', 'h'] where e is most frequent and h is least frequent
     
-    prime_suggestions=[]
-    print(sorted_letters)
+    # prime_suggestions=[]
     
   
     
-    for i in list[0:100]:
-        if containsAll(i,sorted_letters):
-            prime_suggestions.append(i)
-    if(len(prime_suggestions)!=0):
-        return prime_suggestions
+    # for i in list[0:100]:
+    #     if containsAll(i,sorted_letters):
+    #         prime_suggestions.append(i)
+    # if(len(prime_suggestions)>=3):
+    #     return prime_suggestions
     
-    for i in list[0:100]:            
-        if sorted_letters[0]  and sorted_letters[1] and sorted_letters[2] and sorted_letters[3] and sorted_letters[4] in i:
-            prime_suggestions.append(i)
+    # for i in list[0:100]:            
+    #     if sorted_letters[0]  and sorted_letters[1] and sorted_letters[2] and sorted_letters[3] and sorted_letters[4] in i:
+    #         prime_suggestions.append(i)
             
-    if(len(prime_suggestions)!=0):
-        return prime_suggestions
+    # if(len(prime_suggestions)>=3):
+    #     return prime_suggestions
     
-    for i in list[0:100]:            
-            if sorted_letters[0]  and sorted_letters[1] and sorted_letters[2] and sorted_letters[3] in i:
-                prime_suggestions.append(i)
-    if(len(prime_suggestions)!=0):
-        return prime_suggestions
+    # for i in list[0:100]:            
+    #         if sorted_letters[0]  and sorted_letters[1] and sorted_letters[2] and sorted_letters[3] in i:
+    #             prime_suggestions.append(i)
+    # if(len(prime_suggestions)>=3):
+    #     return prime_suggestions
 
-    for i in list[0:100]:            
-            if sorted_letters[0]  and sorted_letters[1] and sorted_letters[2]  in i:
-                prime_suggestions.append(i)
-    if(len(prime_suggestions)!=0):
-        return prime_suggestions
+    # for i in list[0:100]:            
+    #         if sorted_letters[0]  and sorted_letters[1] and sorted_letters[2]  in i:
+    #             prime_suggestions.append(i)
+    # if(len(prime_suggestions)>=3):
+    #     return prime_suggestions
     
-    for i in list[0:100]:
-            if sorted_letters[0]  and sorted_letters[1] in i:
-                prime_suggestions.append(i)
-    if(len(prime_suggestions)!=0):
-        return prime_suggestions
+    # for i in list[0:100]:
+    #         if sorted_letters[0]  and sorted_letters[1] in i:
+    #             prime_suggestions.append(i)
+    # if(len(prime_suggestions)>=3):
+    #     return prime_suggestions
     
-    for i in list[0:100]:            
-            if sorted_letters[0] in i  in i:
-                prime_suggestions.append(i)
-    if(len(prime_suggestions)!=0):
-        return prime_suggestions        
+    # for i in list[0:100]:            
+    #         if sorted_letters[0] in i:
+    #             prime_suggestions.append(i)
+    # if(len(prime_suggestions)!=0):
+    #     return prime_suggestions        
     
     
-    return list[0:100]
+    # return list[0:100]
 
     
 
