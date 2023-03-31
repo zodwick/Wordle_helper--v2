@@ -1,9 +1,17 @@
+from operator import and_, or_
+from functools import reduce
+
+def containsAll(str:str, set:list):
+    return reduce(and_, map(str.__contains__, set))
+
 
 
 def load():
     file = open('five_letter_words.txt','r')
     lines = file.readlines()
     words=list(i[0:5] for i in lines )
+    return words
+
     # print(words)
     
     
@@ -65,13 +73,30 @@ def input_params():
     
     
 def main():
-    load()
+    words=load()
     params:tuple=input_params()    
     lgrey_words=params[0]
     lyellow_words=params[1]
     lgreen_words=params[2]
     lyellow_with_pos=params[3]
     lgreen_with_pos=params[4]
+    l_words_needed=lyellow_words+lgreen_words
+    print(l_words_needed)
+    filter1=[]
+    
+    for i in words:
+       
+        if  containsAll(i,l_words_needed):
+            filter1.append(i)                    
+            
+    print(set(filter1))
+       
+    
+    
+    #filter green --positive
+    
+    #filter yellow --negative
+    #filter grey --negative
     
 
     
