@@ -96,38 +96,45 @@ def suggestions(list):
     
   
     
-    while len(prime_suggestions)==0:
-        
-        for i in list[0:100]:
-            if containsAll(i,sorted_letters):
-                prime_suggestions.append(i)
+    for i in list[0:100]:
+        if containsAll(i,sorted_letters):
+            prime_suggestions.append(i)
+    if(len(prime_suggestions)!=0):
         return prime_suggestions
     
-        for i in list[0:100]:            
-            if sorted_letters[0] in i and sorted_letters[1] and sorted_frequency[2] and sorted_frequency[3] and sorted_frequency[4] in i:
-                prime_suggestions.append(i)
+    for i in list[0:100]:            
+        if sorted_letters[0]  and sorted_letters[1] and sorted_letters[2] and sorted_letters[3] and sorted_letters[4] in i:
+            prime_suggestions.append(i)
+            
+    if(len(prime_suggestions)!=0):
         return prime_suggestions
     
-        for i in list[0:100]:            
-            if sorted_letters[0] in i and sorted_letters[1] and sorted_frequency[2] and sorted_frequency[3] in i:
+    for i in list[0:100]:            
+            if sorted_letters[0]  and sorted_letters[1] and sorted_letters[2] and sorted_letters[3] in i:
                 prime_suggestions.append(i)
+    if(len(prime_suggestions)!=0):
         return prime_suggestions
 
-        for i in list[0:100]:            
-            if sorted_letters[0] in i and sorted_letters[1] and sorted_frequency[2]  in i:
+    for i in list[0:100]:            
+            if sorted_letters[0]  and sorted_letters[1] and sorted_letters[2]  in i:
                 prime_suggestions.append(i)
+    if(len(prime_suggestions)!=0):
         return prime_suggestions
     
-        for i in list[0:100]:
-            if sorted_letters[0] in i and sorted_letters[1] in i:
+    for i in list[0:100]:
+            if sorted_letters[0]  and sorted_letters[1] in i:
                 prime_suggestions.append(i)
+    if(len(prime_suggestions)!=0):
         return prime_suggestions
     
-        for i in list[0:100]:            
+    for i in list[0:100]:            
             if sorted_letters[0] in i  in i:
                 prime_suggestions.append(i)
-        return prime_suggestions
+    if(len(prime_suggestions)!=0):
+        return prime_suggestions        
     
+    
+    return list[0:100]
 
     
 

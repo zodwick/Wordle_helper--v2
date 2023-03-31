@@ -78,6 +78,5 @@
 
 # suggestions(words)
 
-
-l=[]
-print(len(l))
+if "a" and "b" and "c" in "banan":
+    print("yes")
