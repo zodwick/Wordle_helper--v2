@@ -7,6 +7,12 @@ def containsAny(str:str, set:list):
     return reduce(or_, map(str.__contains__, set))
 
 
+def pos_check(word:str, set:list):
+    for i in set:
+        #i = '0a'
+        if word[int(i[0])]!=i[1]:
+            return False
+    return True
 
 def load():
     file = open('five_letter_words.txt','r')
@@ -86,6 +92,7 @@ def main():
     filter1=[]
     filter2=[]
     
+    #filtering out the words that contain all the letters in the yellow and green words
     for i in words:
         if  containsAll(i,l_words_needed):
             filter1.append(i)  
@@ -95,8 +102,16 @@ def main():
     words=set(filter1).intersection(set(filter2))
     
     
+    #filtering out the words that contain the letters in the yellow and green words at the correct positions
     
-    print(words)
+    filter3=[]
+    filter4=[]
+    
+    for i in list(words):
+        print(i)
+    
+    
+    
        
     
     
