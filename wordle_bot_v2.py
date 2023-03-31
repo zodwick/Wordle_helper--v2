@@ -2,6 +2,7 @@ from operator import and_, or_
 from functools import reduce
 
 
+#frequency of ltters kand pidiumbol already present aayitola letters use cheyne is dumb ????????
 #checking algorithms
 
 def containsAll(str:str, set:list):
@@ -109,7 +110,7 @@ def suggestions(list):
     sorted_letters=sorted_letters[0:5]
     print(sorted_letters)
 
-    return(find_prime_suggestions(list[0:int(len(list)/4)], sorted_letters))
+    return(find_prime_suggestions(list[0:int(len(list)/10) if len(list)>100 else int(len(list)/4)], sorted_letters))
     #letters sorted by their frequency eg: ['e', 'l', 'o', 'h'] where e is most frequent and h is least frequent
     
     # prime_suggestions=[]
