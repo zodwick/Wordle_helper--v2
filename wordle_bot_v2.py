@@ -3,14 +3,22 @@ from functools import reduce
 
 
 #checking algorithms
+
 def containsAll(str:str, set:list):
     return reduce(and_, map(str.__contains__, set))
+
 def containsAny(str:str, set:list):
     return reduce(or_, map(str.__contains__, set))
+
 def pos_check(word:str, set:list):
     for i in set:
         #i = '0a'
         if word[int(i[0])]!=i[1]:
+            return False
+    return True
+
+def check_individual(word:str, set:str):
+    if word[int(set[0])]!=set[1]:
             return False
     return True
 
@@ -83,6 +91,7 @@ def input_params():
     
 def main():
     words=load()
+    words_copy=words
     params:tuple=input_params()    
     lgrey_words=params[0]
     lyellow_words=params[1]
@@ -111,21 +120,31 @@ def main():
     for i in list(words):
         # if not pos_check(i,lyellow_with_pos):
         #     filter3.append(i)
-        # this is the correct one as repeating positions of yellow are not checked properly
-        
+        # this is not correct  as repeating positions of yellow are not checked properly
         if pos_check(i,lgreen_with_pos):
             filter4.append(i)
+            
+            
     words=set(filter4).intersection(words)
     
     #filtering yellow
     
     for i in list(words):
-        if   pos_check(i,lyellow_with_pos):
-            filter3.append(i)
-            print(i)
+            for j in lyellow_with_pos:
+                
+                if check_individual(i,j):
+                     filter3.append(i)
             
             
-    print(words.difference(set(filter3)))
+    filtered_words=list(words.difference(set(filter3)))
+    final_list=[]
+    
+    for i in words_copy:
+        if i in filtered_words:
+            final_list.append(i)
+            
+    print(final_list)
+    
     
     
     

@@ -21,20 +21,33 @@
 # print(containsAny('hello', ["p","f"]))
 
 
-# def pos_check(word:str, set:list):
-#     for i in set:
-#         #i = '0a'
-#         if word[int(i[0])]!=i[1]:
-#             return False
-#     return True
+def pos_check(word:str, set:list):
+    for i in set:
+        #i = '0a'
+        if word[int(i[0])]!=i[1]:
+            return False
+    return True
 
 
 # print(pos_check('hello', ['0h', '1l']))
 
 
+words=["hello","heiooo","llovvee"]
+lyellow_with_pos=['1h', '1l']
 
-    for i in list(words):
-        if   pos_check(i,lyellow_with_pos):
-            filter3.append(i)
-            print(i)
+
+def check_individual(word:str, set:str):
+    if word[int(set[0])]!=set[1]:
+            return False
+    return True
+
+filter3=[]
+    
+for i in list(words):
+        for j in lyellow_with_pos:
+            
+             if check_individual(i,j):
+                 filter3.append(i)
+                 
+print(filter3)
             
