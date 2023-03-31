@@ -52,7 +52,7 @@
 # print(filter3)
             
             
-def frequency(list):
+def suggestions(list):
     string_test=""
     for i in list:
         string_test+=i
@@ -67,10 +67,13 @@ def frequency(list):
     
     sorted_frequency = sorted(char_freq.items(), key=lambda x:x[1], reverse=True)
     sorted_letters=[i[0] for i in sorted_frequency]
-    print(sorted_letters)
+    sorted_letters=sorted_letters[0:5]
+    #letters sorted by their frequency eg: ['e', 'l', 'o', 'h'] where e is most frequent and h is least frequent
     
+    prime_suggestions=[]
+        
 
 
 words=["hello","heiooo","llovvee"]
 
-frequency(words)
+suggestions(words)

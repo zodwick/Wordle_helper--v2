@@ -69,24 +69,73 @@ def input_params():
 
     return (lgrey_words, lyellow_words, lgreen_words, lyellow_with_pos, lgreen_with_pos)
            
+           
+           
     
     
+def suggestions(list):
+    string_test=""
+    for i in list:
+        string_test+=i
+    char_freq={}
+
+    for i in string_test:
+        if i in char_freq:
+            char_freq[i]=char_freq[i]+1
+        else:
+            char_freq[i] = 1
+            
+    
+    sorted_frequency = sorted(char_freq.items(), key=lambda x:x[1], reverse=True)
+    sorted_letters=[i[0] for i in sorted_frequency]
+    sorted_letters=sorted_letters[0:5]
+    #letters sorted by their frequency eg: ['e', 'l', 'o', 'h'] where e is most frequent and h is least frequent
+    
+    prime_suggestions=[]
+    # print(sorted_letters)
+    
+  
+    
+    while len(prime_suggestions)==0:
+        
+        for i in list:
+            if containsAll(i,sorted_letters):
+                prime_suggestions.append(i)
+        return prime_suggestions
+    
+        for i in list:            
+            if sorted_letters[0] in i and sorted_letters[1] and sorted_frequency[2] and sorted_frequency[3] and sorted_frequency[4] in i:
+                prime_suggestions.append(i)
+        return prime_suggestions
+    
+        for i in list:            
+            if sorted_letters[0] in i and sorted_letters[1] and sorted_frequency[2] and sorted_frequency[3] in i:
+                prime_suggestions.append(i)
+        return prime_suggestions
+
+        for i in list:            
+            if sorted_letters[0] in i and sorted_letters[1] and sorted_frequency[2]  in i:
+                prime_suggestions.append(i)
+        return prime_suggestions
+    
+        for i in list:            
+            if sorted_letters[0] in i and sorted_letters[1] in i:
+                prime_suggestions.append(i)
+        return prime_suggestions
+    
+        for i in list:            
+            if sorted_letters[0] in i  in i:
+                prime_suggestions.append(i)
+        return prime_suggestions
+    
+
+    
+
+    
+            
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+        
     
     
 def main():
@@ -143,7 +192,13 @@ def main():
         if i in filtered_words:
             final_list.append(i)
             
-    print(final_list)
+    
+    suggestion=suggestions(final_list[0:10])
+    print(suggestion)
+    
+    print(final_list[0:10])
+    
+
     
     
     
