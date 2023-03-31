@@ -98,32 +98,32 @@ def suggestions(list):
     
     while len(prime_suggestions)==0:
         
-        for i in list:
+        for i in list[0:100]:
             if containsAll(i,sorted_letters):
                 prime_suggestions.append(i)
         return prime_suggestions
     
-        for i in list:            
+        for i in list[0:100]:            
             if sorted_letters[0] in i and sorted_letters[1] and sorted_frequency[2] and sorted_frequency[3] and sorted_frequency[4] in i:
                 prime_suggestions.append(i)
         return prime_suggestions
     
-        for i in list:            
+        for i in list[0:100]:            
             if sorted_letters[0] in i and sorted_letters[1] and sorted_frequency[2] and sorted_frequency[3] in i:
                 prime_suggestions.append(i)
         return prime_suggestions
 
-        for i in list:            
+        for i in list[0:100]:            
             if sorted_letters[0] in i and sorted_letters[1] and sorted_frequency[2]  in i:
                 prime_suggestions.append(i)
         return prime_suggestions
     
-        for i in list:
+        for i in list[0:100]:
             if sorted_letters[0] in i and sorted_letters[1] in i:
                 prime_suggestions.append(i)
         return prime_suggestions
     
-        for i in list:            
+        for i in list[0:100]:            
             if sorted_letters[0] in i  in i:
                 prime_suggestions.append(i)
         return prime_suggestions
@@ -204,6 +204,7 @@ def main():
     suggestion=suggestions(final_list)
     print(suggestion)
     
+    print(len(final_list))
     
     print(final_list[0:10])
     
