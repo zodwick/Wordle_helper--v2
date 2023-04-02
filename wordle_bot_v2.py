@@ -233,7 +233,7 @@ def main():
     
     print(final_list[0:10])
     
-    print(final_list)
+    #print(final_list)
     
 
 
