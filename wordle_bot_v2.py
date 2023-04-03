@@ -214,7 +214,12 @@ def main():
     print(len(final_list))
 
     print(final_list[0:10])
+    
+    #print(final_list)
+    
 
 
+    
+    
 if __name__ == '__main__':
     main()
