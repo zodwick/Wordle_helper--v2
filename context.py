@@ -35,7 +35,7 @@ def load():
 
 
 # input parameters
-def input_params():
+def input_params(grey:str, yellow:str, green:str):
     letters:str=input("enter the letters in the order they appear in the wordle")
     colors:str=input("enter the colors in the order they appear in the wordle : use g for grey , y for yellow and r for green").lower()
     
@@ -44,9 +44,9 @@ def input_params():
         print("invalid input : length of letters and colors are not equal")
         return
     
-    grey:str=''
-    yellow:str=''
-    green:str=''
+    grey:str=grey.strip()
+    yellow:str=yellow.strip()
+    green:str=green.strip()
     
     for i in colors:
         if i not in "rgy":
@@ -55,14 +55,14 @@ def input_params():
     
     for i in range(len(colors)):
         
-        if colors[i]=="r":
+        if colors[i]=="g":
             grey+=letters[i]
         elif colors[i]=="y":
             yellow=yellow+str(i)+letters[i]
         else:
             green=green+str(i)+letters[i]
             
-    print(grey,yellow,green)
+    # print(grey,yellow,green)
             
             
         
@@ -183,76 +183,81 @@ def suggestions(list):
 
 
 def main():
-    words = load()
-    words_copy = words
-    params: tuple = input_params()
-    lgrey_words = params[0]
-    lyellow_words = params[1]
-    lgreen_words = params[2]
-    lyellow_with_pos = params[3]
-    lgreen_with_pos = params[4]
-    l_words_needed = lyellow_words+lgreen_words
-    lgrey_words = [i for i in lgrey_words if i not in l_words_needed]
-    filter1 = []
-    filter2 = []
+    ch='y'
+    grey = ""
+    yellow = ""
+    green=""
+    while ch=='y':
+        words = load()
+        words_copy = words
+        params: tuple = input_params(grey=grey, yellow=yellow, green=green)
+        lgrey_words = params[0]
+        lyellow_words = params[1]
+        lgreen_words = params[2]
+        lyellow_with_pos = params[3]
+        lgreen_with_pos = params[4]
+        l_words_needed = lyellow_words+lgreen_words
+        lgrey_words = [i for i in lgrey_words if i not in l_words_needed]
+        filter1 = []
+        filter2 = []
 
-    # filtering out the words that contain all the letters in the yellow and green words
-    for i in words:
-        if len(l_words_needed) != 0:
-            if containsAll(i, l_words_needed):
-                filter1.append(i)
-        else:
-            filter1 = words
+        # filtering out the words that contain all the letters in the yellow and green words
+        for i in words:
+            if len(l_words_needed) != 0:
+                if containsAll(i, l_words_needed):
+                    filter1.append(i)
+            else:
+                filter1 = words
 
-        if len(lgrey_words) != 0:
-            if not containsAny(i, lgrey_words):
-                filter2.append(i)
-        else:
-            filter2 = words
+            if len(lgrey_words) != 0:
+                if not containsAny(i, lgrey_words):
+                    filter2.append(i)
+            else:
+                filter2 = words
 
-    words = set(filter1).intersection(set(filter2))
+        words = set(filter1).intersection(set(filter2))
 
-    # filtering out the words that contain the letters in the yellow and green words at the correct positions
+        # filtering out the words that contain the letters in the yellow and green words at the correct positions
 
-    filter3 = []
-    filter4 = []
+        filter3 = []
+        filter4 = []
 
-    for i in list(words):
-        # if not pos_check(i,lyellow_with_pos):
-        #     filter3.append(i)
-        # this is not correct  as repeating positions of yellow are not checked properly
-        if pos_check(i, lgreen_with_pos):
-            filter4.append(i)
+        for i in list(words):
+            # if not pos_check(i,lyellow_with_pos):
+            #     filter3.append(i)
+            # this is not correct  as repeating positions of yellow are not checked properly
+            if pos_check(i, lgreen_with_pos):
+                filter4.append(i)
 
-    words = set(filter4).intersection(words)
+        words = set(filter4).intersection(words)
 
-    # filtering yellow
+        # filtering yellow
 
-    for i in list(words):
-        for j in lyellow_with_pos:
+        for i in list(words):
+            for j in lyellow_with_pos:
 
-            if check_individual(i, j):
-                filter3.append(i)
+                if check_individual(i, j):
+                    filter3.append(i)
 
-    filtered_words = list(words.difference(set(filter3)))
-    final_list = []
+        filtered_words = list(words.difference(set(filter3)))
+        final_list = []
 
-    for i in words_copy:
-        if i in filtered_words:
-            final_list.append(i)
+        for i in words_copy:
+            if i in filtered_words:
+                final_list.append(i)
 
-    suggestion = suggestions(final_list)
-    print(suggestion)
+        suggestion = suggestions(final_list)
+        print(suggestion)
 
-    print(len(final_list))
+        print(len(final_list))
 
-    print(final_list[0:10])
-    
-    #print(final_list)
-    
+        print(final_list[0:10])
+
+        #print(final_list)
 
 
-    
-    
+
+
+
 if __name__ == '__main__':
-    main()
+        main()

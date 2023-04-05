@@ -187,5 +187,75 @@
 
 
 
-l=["anand","anand","hello"]
-print([set(l)])
+# l=["anand","anand","hello"]
+# print([set(l)])
+
+
+def input_params():
+    letters:str=input("enter the letters in the order they appear in the wordle")
+    colors:str=input("enter the colors in the order they appear in the wordle : use g for grey , y for yellow and r for green").lower()
+    
+    
+    if len(letters)!=len(colors):
+        print("invalid input : length of letters and colors are not equal")
+        return
+    
+    grey:str=''
+    yellow:str=''
+    green:str=''
+    
+    for i in colors:
+        if i not in "rgy":
+            print("invalid color input")
+            return
+    
+    for i in range(len(colors)):
+        
+        if colors[i]=="g":
+            grey+=letters[i]
+        elif colors[i]=="y":
+            yellow=yellow+str(i)+letters[i]
+        else:
+            green=green+str(i)+letters[i]
+            
+    print(grey,yellow,green)
+            
+            
+        
+    
+    
+        
+    # grey: str = input(
+    #     "Enter the elements that were greyed out -no need to put spaces in between --  ")
+    # yellow: str = input('Enter the elements that are yellow along wihh their positions(0-4)'
+    #                     'eg: 0a2x4i'
+    #                     '    4k2s -- ')
+    # green: str = input('Enter the greened elements along wihh their positions(0-4)'
+    #                    'eg: 0a2x'
+    #                    '    4k2s -- ')
+
+    # ['03', '4k'] format
+    # ['a','b'] format
+
+    # greyed out words
+    lgrey_words = list(grey.strip())
+    lgrey_words = [*set(lgrey_words)]
+
+    # yellowed out words
+    lyellow_words = list(i for i in yellow.strip() if i.isalpha())
+    lyellow_words = [*set(lyellow_words)]
+    lyellow_with_pos = []
+    for i in range(0, len(yellow), 2):
+        lyellow_with_pos.append(yellow[i:i+2])
+
+    # greened out words
+    lgreen_words = list(i for i in green.strip() if i.isalpha())
+    lgreen_words = [*set(lgreen_words)]
+    lgreen_with_pos = []
+    for i in range(0, len(green), 2):
+        lgreen_with_pos.append(green[i:i+2])
+
+    return (lgrey_words, lyellow_words, lgreen_words, lyellow_with_pos, lgreen_with_pos)
+
+
+print(input_params())
