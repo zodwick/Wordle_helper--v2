@@ -99,7 +99,8 @@ def input_params(grey:str, yellow:str, green:str):
     for i in range(0, len(green), 2):
         lgreen_with_pos.append(green[i:i+2])
 
-    return (lgrey_words, lyellow_words, lgreen_words, lyellow_with_pos, lgreen_with_pos)
+    return (lgrey_words, lyellow_words, lgreen_words, lyellow_with_pos, lgreen_with_pos,grey,yellow,green)
+    #['l', 't'] ['e', 'a'] ['r'] ['0a', '3e'] ['4r']
 
 
 def find_prime_suggestions(word_list, sorted_letters):
@@ -196,6 +197,9 @@ def main():
         lgreen_words = params[2]
         lyellow_with_pos = params[3]
         lgreen_with_pos = params[4]
+        grey += params[5]
+        yellow += params[6]
+        green += params[7]
         l_words_needed = lyellow_words+lgreen_words
         lgrey_words = [i for i in lgrey_words if i not in l_words_needed]
         filter1 = []
@@ -252,6 +256,8 @@ def main():
         print(len(final_list))
 
         print(final_list[0:10])
+        
+        ch=input("Do you want to continue? (y/n)")
 
         #print(final_list)
 
