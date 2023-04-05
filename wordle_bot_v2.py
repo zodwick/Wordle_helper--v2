@@ -36,8 +36,9 @@ def load():
 
 # input parameters
 def input_params(grey:str, yellow:str, green:str):
-    letters:str=input("enter the letters in the order they appear in the wordle")
-    colors:str=input("enter the colors in the order they appear in the wordle : use g for grey , y for yellow and r for green").lower()
+    print("****************************************************************************************")
+    letters:str=input("enter the letters in the order they appear in the wordle :-")
+    colors:str=input("enter the colors in the order they appear in the wordle : use g for grey , y for yellow and r for green :-").lower()
     
     
     if len(letters)!=len(colors):
@@ -218,6 +219,8 @@ def main():
         ch=input("Do you want to continue? (y/n)")
 
         #print(final_list)
+    
+    print("Thank you for playing <3" )
 
 
 
