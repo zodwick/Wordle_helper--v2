@@ -36,14 +36,47 @@ def load():
 
 # input parameters
 def input_params():
-    grey: str = input(
-        "Enter the elements that were greyed out -no need to put spaces in between --  ")
-    yellow: str = input('Enter the elements that are yellow along wihh their positions(0-4)'
-                        'eg: 0a2x4i'
-                        '    4k2s -- ')
-    green: str = input('Enter the greened elements along wihh their positions(0-4)'
-                       'eg: 0a2x'
-                       '    4k2s -- ')
+    letters:str=input("enter the letters in the order they appear in the wordle")
+    colors:str=input("enter the colors in the order they appear in the wordle : use g for grey , y for yellow and r for green").lower()
+    
+    
+    if len(letters)!=len(colors):
+        print("invalid input : length of letters and colors are not equal")
+        return
+    
+    grey:str=''
+    yellow:str=''
+    green:str=''
+    
+    for i in colors:
+        if i not in "rgy":
+            print("invalid color input")
+            return
+    
+    for i in range(len(colors)):
+        
+        if colors[i]=="r":
+            grey+=letters[i]
+        elif colors[i]=="y":
+            yellow=yellow+str(i)+letters[i]
+        else:
+            green=green+str(i)+letters[i]
+            
+    print(grey,yellow,green)
+            
+            
+        
+    
+    
+        
+    # grey: str = input(
+    #     "Enter the elements that were greyed out -no need to put spaces in between --  ")
+    # yellow: str = input('Enter the elements that are yellow along wihh their positions(0-4)'
+    #                     'eg: 0a2x4i'
+    #                     '    4k2s -- ')
+    # green: str = input('Enter the greened elements along wihh their positions(0-4)'
+    #                    'eg: 0a2x'
+    #                    '    4k2s -- ')
 
     # ['03', '4k'] format
     # ['a','b'] format
