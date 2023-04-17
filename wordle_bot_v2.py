@@ -141,8 +141,32 @@ def suggestions(list):
 
     return (find_prime_suggestions(list[0:int(len(list)/10) if len(list) > 100 else int(len(list)/4)], sorted_letters))
    
-
+def suggestions_for_max_info(list:list,letters:list):
+    print("suggestions for max info")
+    
+    l=[]
+    for i in list:
+        #i is a word
+        flag=0
+        for j in letters:
+            #j is a letter
+            if j  in i:
+                flag=1
+                break
+        if flag==0:
+            l.append(i)
+    return l
+        
+    
+    
+    
+    
+    
+    
+    
+    
 def main():
+    tries_no=1
     ch='y'
     grey = ""
     yellow = ""
@@ -208,13 +232,26 @@ def main():
         for i in words_copy:
             if i in filtered_words:
                 final_list.append(i)
+                
+        #rohit suggestion for max info in second try
+        if tries_no==1:
+            letters = lgrey_words+lyellow_words+lgreen_words
+            #removing words that contain letters in the first try
+            final_list=suggestions_for_max_info(final_list,letters)
+        
 
         suggestion = suggestions(final_list)
+            
+            
+            
+            
         print(suggestion)
 
         print(len(final_list))
 
         print(final_list[0:10])
+        
+        tries_no+=1
         
         ch=input("Do you want to continue? (y/n)")
 
