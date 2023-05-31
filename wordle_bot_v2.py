@@ -235,9 +235,10 @@ def main():
                 
         #rohit suggestion for max info in second try
         if tries_no==1:
+            print("first try")
             letters = lgrey_words+lyellow_words+lgreen_words
             #removing words that contain letters in the first try
-            final_list=suggestions_for_max_info(final_list,letters)
+            final_list=suggestions_for_max_info(words_copy,letters)
         
 
         suggestion = suggestions(final_list)
@@ -248,6 +249,7 @@ def main():
         print(suggestion)
 
         print(len(final_list))
+        # print(len(suggestion))
 
         print(final_list[0:10])
         
