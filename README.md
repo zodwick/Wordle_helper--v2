@@ -1,95 +1,63 @@
-# Wordle_helper--v2
 
+
+
+<h1 align="center"> Wordle_helper--v2</h1>
+
+This program is a solver for the game Wordle. It takes input parameters representing the greyed-out, yellowed-out, and greened-out letters in the word and provides suggestions for the next word guess.
+
+## Functioning
+The program will prompt you to enter the letters in the order they appear in the wordle and the colors in the order they appear.
+Use:
+
+- "g" for grey
+- "y" for yellow 
+- "r" for green.
 
 
 <h1 align="center">
+  
+   <img src="https://github.com/zodwick/Wordle_helper--v2/blob/main/screenshots/cli.png" alt="Markdownify" >
+<br>
+<br>
+
+  <img src="https://github.com/zodwick/Wordle_helper--v2/blob/main/screenshots/wordle_ss.png" alt="Markdownify" >
   <br>
-  <img src="https://user-images.githubusercontent.com/115868723/230404813-c5b83d11-2bf3-4891-a8b9-b86bbcd92f59.png" alt="Markdownify" width="200">
-  <br>
-  HelpNow
-  <br>
+  
 </h1>
 
-<h3 align="center">Rapid Responses Safer Communities</h3>
 
-
-## About
-
-This project was created for IBeTo-2023 by Team 420 . The project bagged the first prize at IBeto.
-
-## Team Members:
-
-- [Anand](https://github.com/zodwick)
-- [Jeff Prakash](https://github.com/jeffprakash)
-- [Muhammed Jamal](https://github.com/jamaljm)
-- [Riya Sunil](https://github.com/milkbreadzee)
-
-
-<p align="center">
-  <a href="#problem-helpnow-solves">Problem Statement</a> •
-   <a href="#solution">Solution</a> •
-  <a href="#key-features">Key Features</a> •
-  <a href="#how-to-use">How To Use</a> •
-
-  
-</p>
-
-  <img src="https://i.imgur.com/RbgjtzH.png" alt="Screenshot" width="full">
-
-
-## Problem HelpNow Solves
-Inefficiencies and inabilities of our current system to effectively report, handle and communicate in times  of emergencies 
-
-* No quick and easy way for reporting
-* Lack of an automatable endpoint for such emergencies
-* Lack of effective communication resources between various rapid response services
-
-
-## Solution
-Quick and easy way for people to report accidents and request emergency services. The platform consists of a website and a mobile app that allows users to report accidents in real-time, including information such as the location, type of accident, and required help such as ambulance, police, and fire force.
-
-
-
-## Key Features
-
-* Real-time updates using Firebase.
-* Integration with  Maps.
-* User Authentication using Mobile Number
-* Clean and simple UI
-* Easy to read and write endpoints
-* Dark/Light mode
-* Cross platform
-  - Windows, macOS and Linux ready.
- 
-   <br>
-   <img src="https://i.imgur.com/JzjPQUj.png" alt="Screenshot" width="full">
-  <br>
-
+The program will then provide suggestions for the next word guess based on the given parameters. It uses various filtering algorithms to narrow down the word list and find potential matches.
 
 ## How To Use
 
-To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
+Make sure you have Python installed on your system.
+- Open a terminal or command prompt.
+- Navigate to the directory where the code file (wordle_solver.py) is located.
+- Run the following command
 
-```bash
-# Clone this repository
-$ git clone https://github.com/amitmerchant1990/electron-markdownify
+   ```bash
+   python wordle_solver.py
+   ```
 
-# Go into the repository
-$ cd ibetopro
-
-# Install dependencies
-$ npm install
-
-# Run the app
-$ npm start
-```
-
-> **Note**
-> If you're using Linux Bash for Windows, [see this guide](https://www.howtogeek.com/261575/how-to-run-graphical-linux-desktop-applications-from-windows-10s-bash-shell/) or use `node` from the command prompt.
-
+## Inbuilt functions
+The Wordle Solver program includes the following functions:
+- containsAll(str, set): Checks if a string contains all the elements in a given set.
+- containsAny(str, set): Checks if a string contains any of the elements in a given set.
+- pos_check(word, set): Checks if the letters in a word are in the correct positions based on a given set of positions and letters.
+- check_individual(word, set): Checks if a specific letter in a word is in the correct position based on a given set of position and letter.
+- load(): Loads the word list from a file.
+- input_params(grey, yellow, green): Takes user input for the greyed-out, yellowed-out, and greened-out letters and returns the processed parameters.
+- find_prime_suggestions(word_list, sorted_letters): Finds prime suggestions for the next word guess based on the given word list and sorted letters.
+- suggestions(list): Provides suggestions for the next word guess based on the given list of words.
+- suggestions_for_max_info(list, letters): Filters out words that contain letters from the first try and returns suggestions for maximum information.
 
 
----
+
+
+
+
+
+
 
 
 
