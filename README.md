@@ -28,6 +28,7 @@ Use:
 
 The program will then provide suggestions for the next word guess based on the given parameters. It uses various filtering algorithms to narrow down the word list and find potential matches.
 
+
 ## How To Use
 
 Make sure you have Python installed on your system.
