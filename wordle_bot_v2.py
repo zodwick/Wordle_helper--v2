@@ -63,26 +63,9 @@ def input_params(grey:str, yellow:str, green:str):
         else:
             green=green+str(i)+letters[i]
             
-    # print(grey,yellow,green)
             
             
-        
-    
-    
-        
-    # grey: str = input(
-    #     "Enter the elements that were greyed out -no need to put spaces in between --  ")
-    # yellow: str = input('Enter the elements that are yellow along wihh their positions(0-4)'
-    #                     'eg: 0a2x4i'
-    #                     '    4k2s -- ')
-    # green: str = input('Enter the greened elements along wihh their positions(0-4)'
-    #                    'eg: 0a2x'
-    #                    '    4k2s -- ')
 
-    # ['03', '4k'] format
-    # ['a','b'] format
-
-    # greyed out words
     lgrey_words = list(grey.strip())
     lgrey_words = [*set(lgrey_words)]
 
