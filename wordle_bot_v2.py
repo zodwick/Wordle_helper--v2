@@ -27,8 +27,8 @@ def check_individual(word: str, set: str):
 
 
 # loading the words from the file
-def load():
-    file = open('five_letter_words.txt', 'r')
+def load(filename):
+    file = open(filename, 'r')
     lines = file.readlines()
     words = list(i[0:5] for i in lines)
     return words
@@ -154,8 +154,17 @@ def main():
     grey = ""
     yellow = ""
     green=""
-    while ch=='y':
-        words = load()
+    num_of_letter = int(input("enter the number of letters in the wordle :-"))
+    if num_of_letter ==5:
+        filename = "five_letter_words.txt"
+    elif num_of_letter ==6:
+        filename = "six_letter_words.txt"
+    else:
+        print("invalid input : only 5 or 6")
+        return
+    while ch=='y' and filename!=None:
+
+        words = load(filename)
         words_copy = words
         params: tuple = input_params(grey=grey, yellow=yellow, green=green)
         lgrey_words = params[0]
