@@ -4,6 +4,7 @@ from operator import and_, or_
 # frequency of ltters kand pidiumbol already present aayitola letters use cheyne is dumb ????????
 # checking algorithms
 
+
 def containsAll(str: str, set: list):
     return reduce(and_, map(str.__contains__, set))
 
@@ -14,7 +15,7 @@ def containsAny(str: str, set: list):
 
 def pos_check(word: str, set: list):
     for i in set:
-        #i = '0a'
+        # i = '0a'
         if word[int(i[0])] != i[1]:
             return False
     return True
@@ -27,44 +28,42 @@ def check_individual(word: str, set: str):
 
 
 # loading the words from the file
-def load(filename):
+def load(filename, num_of_letter: int):
     file = open(filename, 'r')
     lines = file.readlines()
-    words = list(i[0:5] for i in lines)
+    words = list(i[0:num_of_letter] for i in lines)
     return words
 
 
 # input parameters
-def input_params(grey:str, yellow:str, green:str):
+def input_params(grey: str, yellow: str, green: str):
     print("****************************************************************************************")
-    letters:str=input("enter the letters in the order they appear in the wordle :-")
-    colors:str=input("enter the colors in the order they appear in the wordle : use g for grey , y for yellow and r for green :-").lower()
-    
-    
-    if len(letters)!=len(colors):
+    letters: str = input(
+        "enter the letters in the order they appear in the wordle :-")
+    colors: str = input(
+        "enter the colors in the order they appear in the wordle : use g for grey , y for yellow and r for green :-").lower()
+
+    if len(letters) != len(colors):
         print("invalid input : length of letters and colors are not equal")
         return
-    
-    grey:str=grey.strip()
-    yellow:str=yellow.strip()
-    green:str=green.strip()
-    
+
+    grey: str = grey.strip()
+    yellow: str = yellow.strip()
+    green: str = green.strip()
+
     for i in colors:
         if i not in "rgy":
             print("invalid color input")
             return
-    
+
     for i in range(len(colors)):
-        
-        if colors[i]=="g":
-            grey+=letters[i]
-        elif colors[i]=="y":
-            yellow=yellow+str(i)+letters[i]
+
+        if colors[i] == "g":
+            grey += letters[i]
+        elif colors[i] == "y":
+            yellow = yellow+str(i)+letters[i]
         else:
-            green=green+str(i)+letters[i]
-            
-            
-            
+            green = green+str(i)+letters[i]
 
     lgrey_words = list(grey.strip())
     lgrey_words = [*set(lgrey_words)]
@@ -83,8 +82,8 @@ def input_params(grey:str, yellow:str, green:str):
     for i in range(0, len(green), 2):
         lgreen_with_pos.append(green[i:i+2])
 
-    return (lgrey_words, lyellow_words, lgreen_words, lyellow_with_pos, lgreen_with_pos,grey,yellow,green)
-    #['l', 't'] ['e', 'a'] ['r'] ['0a', '3e'] ['4r']
+    return (lgrey_words, lyellow_words, lgreen_words, lyellow_with_pos, lgreen_with_pos, grey, yellow, green)
+    # ['l', 't'] ['e', 'a'] ['r'] ['0a', '3e'] ['4r']
 
 
 def find_prime_suggestions(word_list, sorted_letters):
@@ -123,48 +122,44 @@ def suggestions(list):
     print(sorted_letters)
 
     return (find_prime_suggestions(list[0:int(len(list)/10) if len(list) > 100 else int(len(list)/4)], sorted_letters))
-   
-def suggestions_for_max_info(list:list,letters:list):
+
+
+def suggestions_for_max_info(list: list, letters: list):
     print("suggestions for max info")
-    
-    l=[]
+
+    l = []
     for i in list:
-        #i is a word
-        flag=0
+        # i is a word
+        flag = 0
         for j in letters:
-            #j is a letter
-            if j  in i:
-                flag=1
+            # j is a letter
+            if j in i:
+                flag = 1
                 break
-        if flag==0:
+        if flag == 0:
             l.append(i)
     return l
-        
-    
-    
-    
-    
-    
-    
-    
-    
+
+
 def main():
-    tries_no=1
-    ch='y'
+    tries_no = 1
+    ch = 'y'
     grey = ""
     yellow = ""
-    green=""
+    green = ""
     num_of_letter = int(input("enter the number of letters in the wordle :-"))
-    if num_of_letter ==5:
+    if num_of_letter == 5:
         filename = "five_letter_words.txt"
-    elif num_of_letter ==6:
+    elif num_of_letter == 6:
         filename = "six_letter_words.txt"
+    elif num_of_letter == 4:
+        filename = "four_letter_words.txt"
     else:
         print("invalid input : only 5 or 6")
         return
-    while ch=='y' and filename!=None:
+    while ch == 'y' and filename != None:
 
-        words = load(filename)
+        words = load(filename, num_of_letter)
         words_copy = words
         params: tuple = input_params(grey=grey, yellow=yellow, green=green)
         lgrey_words = params[0]
@@ -193,7 +188,6 @@ def main():
                     filter2.append(i)
             else:
                 filter2 = words
-                
 
         words = set(filter1).intersection(set(filter2))
 
@@ -225,38 +219,31 @@ def main():
         for i in words_copy:
             if i in filtered_words:
                 final_list.append(i)
-                
-        #rohit suggestion for max info in second try
-        if tries_no==1:
+
+        # rohit suggestion for max info in second try
+        if tries_no == 1:
             print("first try")
             letters = lgrey_words+lyellow_words+lgreen_words
-            #removing words that contain letters in the first try
-            final_list=suggestions_for_max_info(words_copy,letters)
-        
+            # removing words that contain letters in the first try
+            final_list = suggestions_for_max_info(words_copy, letters)
 
         suggestion = suggestions(final_list)
-            
-            
-            
-            
+
         print(suggestion)
 
         print(len(final_list))
         # print(len(suggestion))
 
         print(final_list[0:10])
-        
-        tries_no+=1
-        
-        ch=input("Do you want to continue? (y/n)")
 
-        #print(final_list)
-    
-    print("Thank you for playing <3" )
+        tries_no += 1
 
+        ch = input("Do you want to continue? (y/n)")
 
+        # print(final_list)
 
+    print("Thank you for playing <3")
 
 
 if __name__ == '__main__':
-        main()
+    main()

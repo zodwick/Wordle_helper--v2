@@ -8,11 +8,11 @@ import csv
 
 with open("unigram_freq.csv") as f:
     list2 = [row.split(",")[0] for row in f]
-    list_5= list(i for i in list2 if len(i)==6)
+    list_5= list(i for i in list2 if len(i)==4)
     # print(list_5)
     
 
-file = open('five_letter_words.txt','w')
+file = open('four_letter_words.txt','w')
 # file.writelines(list_5)
 
 for  item in list_5:
@@ -22,7 +22,7 @@ file.close()
 file.close()
     
     
-filename = "six_letter_worrrds2.csv"
+filename = "four_letter_worrrds2.csv"
     
 # writing to csv file 
 with open(filename, 'w') as csvfile: 
@@ -41,7 +41,7 @@ with open(filename, 'r') as f:
     reader = csv.reader(f)
     your_list = list(reader)
     # print(list(i for i in your_list if len(i)==5))
-    print(list(i for i in your_list if len(your_list[0][0])==5))
+    print(list(i for i in your_list if len(your_list[0][0])==4))
 
 
 
